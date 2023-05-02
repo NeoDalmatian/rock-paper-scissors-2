@@ -11,7 +11,7 @@ function getComputerChoice () {
   return conversion === 1? "ROCK": conversion === 2? "PAPER": "SCISSORS";
 }
 
-function round (playerSelection, computerSelection = getComputerChoice()) {
+function round (playerSelection = prompt(), computerSelection = getComputerChoice()) {
   playerSelection = playerSelection.toUpperCase();
   if (playerSelection === computerSelection) {
     return `This round is TIE! ${playerSelection} and ${computerSelection} are equal.`;
@@ -31,9 +31,9 @@ function round (playerSelection, computerSelection = getComputerChoice()) {
   }
 }
  
-function game() {
+function game(playerSelection) {
   for (numberOfRounds = 0; numberOfRounds < 5; numberOfRounds++) {
-    console.log(round(prompt()));
+    console.log(round(playerSelection));
   }
 
   if (numberOfRounds === 5) {
