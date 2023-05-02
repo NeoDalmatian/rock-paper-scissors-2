@@ -13,8 +13,10 @@ function getComputerChoice () {
 
 function round (playerSelection, computerSelection = getComputerChoice()) {
   playerSelection = playerSelection.toUpperCase();
+  
   if (playerSelection === computerSelection) {
-    return `This round is TIE! ${playerSelection} and ${computerSelection} are equal.`;
+    return `This round is TIE! ${playerSelection} and ${computerSelection}
+            are equal.`;
   } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS" ||
       playerSelection === "PAPER" && computerSelection === "ROCK" ||
       playerSelection === "SCISSORS" && computerSelection === "PAPER") {
@@ -24,10 +26,12 @@ function round (playerSelection, computerSelection = getComputerChoice()) {
       playerSelection === "ROCK" && computerSelection === "PAPER" ||
       playerSelection === "PAPER" && computerSelection === "SCISSORS"){
     computerResult++;
-    return `You LOST this round! ${playerSelection} loses to ${computerSelection}!`;
+    return `You LOST this round! ${playerSelection}
+            loses to ${computerSelection}!`;
   } else {
     numberOfRounds--;
-    return `${playerSelection} is invalid input, either enter rock, paper or scissors`
+    return `${playerSelection} is invalid input, either enter rock,
+            paper or scissors`
   }
 }
  
@@ -36,7 +40,8 @@ function game() {
   computerResult = 0;
 
   for (numberOfRounds = 0; numberOfRounds < 5; numberOfRounds++) {
-    console.log(round(prompt("Please enter: rock, paper or scissors.", "rock")));
+    console.log(round(prompt("Please enter: rock, paper or scissors.",
+                             "rock")));
   }
 
   if (numberOfRounds === 5) {
