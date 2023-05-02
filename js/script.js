@@ -11,7 +11,7 @@ function getComputerChoice () {
   return conversion === 1? "ROCK": conversion === 2? "PAPER": "SCISSORS";
 }
 
-function round (playerSelection = prompt(), computerSelection = getComputerChoice()) {
+function round (playerSelection, computerSelection = getComputerChoice()) {
   playerSelection = playerSelection.toUpperCase();
   if (playerSelection === computerSelection) {
     return `This round is TIE! ${playerSelection} and ${computerSelection} are equal.`;
@@ -31,27 +31,21 @@ function round (playerSelection = prompt(), computerSelection = getComputerChoic
   }
 }
  
-function game(playerSelection) {
+function game() {
+  playerResult = 0;
+  computerResult = 0;
+
   for (numberOfRounds = 0; numberOfRounds < 5; numberOfRounds++) {
-    console.log(round(playerSelection));
+    console.log(round(prompt("Please enter: rock, paper or scissors.", "rock")));
   }
 
   if (numberOfRounds === 5) {
     if (playerResult === computerResult) {
       console.log("It's a tie!")
-      reset();
     } else if (playerResult > computerResult) {
       console.log("You WON the game!")
-      reset();
     } else if (playerResult < computerResult) {
       console.log("You LOST the game!")
-      reset();
     }
   }
-}
-
-function reset() {
-  playerResult = 0;
-  computerResult = 0;
-  numberOfRounds = 0;
 }
