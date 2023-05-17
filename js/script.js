@@ -38,10 +38,11 @@ function round (playerSelection, computerSelection = getComputerChoice()) {
 function game() {
   playerResult = 0;
   computerResult = 0;
+  numberOfRounds = 0;
 
-  for (numberOfRounds = 0; numberOfRounds < 5; numberOfRounds++) {
-    console.log(round(prompt("Please enter: rock, paper or scissors.",
-                             "rock")));
+  while (numberOfRounds < 5) {
+    console.log(round(prompt("Please enter: rock, paper or scissors.")));
+    numberOfRounds++;
   }
 
   if (numberOfRounds === 5) {
