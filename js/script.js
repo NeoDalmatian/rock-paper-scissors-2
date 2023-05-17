@@ -1,4 +1,5 @@
 let playerButtons = document.getElementById("buttons").childNodes;
+let displayText = document.querySelector("h1");
 
 let playerResult = 0;
 let computerResult = 0;
@@ -20,23 +21,17 @@ function getComputerChoice () {
 }
 
 function round (playerSelection, computerSelection = getComputerChoice()) {
-  playerSelection = playerSelection.toUpperCase();
-  
   if (playerSelection === computerSelection) {
-    return `This round is TIE! ${playerSelection} and ${computerSelection} are equal.`;
+    displayText.textContent =
+     `This round is a tie, you both chose ${playerSelection}`;
   } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS" ||
-      playerSelection === "PAPER" && computerSelection === "ROCK" ||
-      playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-    playerResult++;
-    return `You WON this round! ${playerSelection} beats ${computerSelection}!`;
-  } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK" ||
-      playerSelection === "ROCK" && computerSelection === "PAPER" ||
-      playerSelection === "PAPER" && computerSelection === "SCISSORS"){
-    computerResult++;
-    return `You LOST this round! ${playerSelection} loses to ${computerSelection}!`;
+             playerSelection === "PAPER" && computerSelection === "ROCK" ||
+             playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+    displayText.textContent =
+     `You WON this round! ${playerSelection} beats ${computerSelection}!`;
   } else {
-    numberOfRounds--;
-    return `${playerSelection} is invalid input, either enter rock, paper or scissors`
+    displayText.textContent =
+     `You LOST this round! ${playerSelection} loses to ${computerSelection}!`;
   }
 }
  
