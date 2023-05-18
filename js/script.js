@@ -1,4 +1,4 @@
-let playerButtons = document.getElementById("buttons").childNodes;
+let playerButtons = document.querySelectorAll(".buttons button");
 let displayText = document.querySelector("h1");
 let resetButton = document.querySelector(".reset");
 // add UI for counters
@@ -7,8 +7,8 @@ let computerResult = 0;
 let numberOfRounds = 0;
 
 playerButtons.forEach(button => {
-  button.addEventListener("click", (e) => {
-    round(e.target.attributes.id.value);
+  button.addEventListener("click", () => {
+    round(button.textContent);
   });
 });
 
