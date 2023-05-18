@@ -17,32 +17,28 @@ resetButton.addEventListener("click", () => {
   reset();
 });
 
-function randomNumber (n) {
-  return Math.floor(Math.random() * n) + 1;
+function getComputerChoice () {
+  let randomNumber = Math.floor(Math.random() * 3) + 1;
+  return randomNumber === 1? "ROCK": randomNumber === 2? "PAPER": "SCISSORS";
 }
 
-function getComputerChoice () {
-  let conversion = randomNumber(3);
-  return conversion === 1? "ROCK": conversion === 2? "PAPER": "SCISSORS";
-}
-//swap condition of else if to if so it looks neater
 function round (playerSelection, computerSelection = getComputerChoice()) {
-  if (playerSelection === computerSelection) {
+  if (playerSelection === "ROCK" && computerSelection === "SCISSORS" ||
+      playerSelection === "PAPER" && computerSelection === "ROCK" ||
+      playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+    displayText.textContent =
+     `You WON this round! ${playerSelection} beats ${computerSelection}!`;
+    numberOfRounds++;
+    playerResult++;
+  } else if (playerSelection === computerSelection) {
     displayText.textContent =
      `This round is a tie, you both chose ${playerSelection}`;
     numberOfRounds++;
-  } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS" ||
-             playerSelection === "PAPER" && computerSelection === "ROCK" ||
-             playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-    displayText.textContent =
-     `You WON this round! ${playerSelection} beats ${computerSelection}!`;
-     numberOfRounds++;
-     playerResult++;
   } else {
     displayText.textContent =
      `You LOST this round! ${playerSelection} loses to ${computerSelection}!`;
-     numberOfRounds++;
-     computerResult
+    numberOfRounds++;
+    computerResult
   }
   result();
 }
